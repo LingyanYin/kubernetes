@@ -1977,7 +1977,7 @@ func newTestPersistentVolumeClaimForQuota(name string) *v1.PersistentVolumeClaim
 				v1.ReadWriteOnce,
 				v1.ReadOnlyMany,
 			},
-			Resources: v1.ResourceRequirements{
+			Resources: v1.VolumeResourceRequirements{
 				Requests: v1.ResourceList{
 					v1.ResourceName(v1.ResourceStorage): resource.MustParse("1Gi"),
 				},
@@ -2058,7 +2058,7 @@ func newTestServiceForQuota(name string, serviceType v1.ServiceType, allocateLoa
 			Type: serviceType,
 			Ports: []v1.ServicePort{{
 				Port:       80,
-				TargetPort: intstr.FromInt(80),
+				TargetPort: intstr.FromInt32(80),
 			}},
 			AllocateLoadBalancerNodePorts: allocateNPs,
 		},
